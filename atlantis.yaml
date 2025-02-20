@@ -2,8 +2,16 @@ version: 3
 projects:
 - dir: environments/dev
   workflow: terragrunt
+  name: dev
+  autoplan: 
+    when_modified: ["**/*"]
+    enabled: true
 - dir: environments/prod
   workflow: terragrunt
+  name: prod
+  autoplan: 
+    when_modified: ["**/*"]
+    enabled: true
 workflows:
   terragrunt:
     plan:
