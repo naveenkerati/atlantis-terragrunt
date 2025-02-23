@@ -39,3 +39,18 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "subnets" {
+  type = list(object({
+    subnet_name = string
+    subnet_cidr = string
+    subnet_az   = string
+  }))
+  description = <<EOT
+List of subnets to create, where each subnet is defined as:
+{
+  subnet_name = "..."
+  subnet_cidr = "..."
+  subnet_az   = "..."
+}
+}

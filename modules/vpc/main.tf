@@ -37,6 +37,17 @@ resource "aws_subnet" "private" {
     { Name = "Private Subnet ${count.index}" }
   )
 }
+resource "aws_subnet" "example" {
+  for_each = { for subnet in var.subnets : subnet.subnet_name => subnet }
+
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = each.value.subnet_cidr
+  availability_zone = each.value.subnet_az
+
+  tags = {
+    Name = each.value.subnet_name
+  }
+}
 
 # Internet Gateway
 resource "aws_internet_gateway" "igw" {
