@@ -1,0 +1,20 @@
+version: 3
+projects:
+  - name: dev
+    dir: environments/dev
+    workflow: terragrunt-workflow
+  - name: qa
+    dir: environments/qa
+    workflow: terragrunt-workflow
+  - name: prod
+    dir: environments/prod
+    workflow: terragrunt-workflow
+
+workflows:
+  terragrunt-workflow:
+    plan:
+      steps:
+        - run: terragrunt run-all plan --terragrunt-non-interactive
+    apply:
+      steps:
+        - run: terragrunt run-all apply --terragrunt-non-interactive
