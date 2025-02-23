@@ -3,6 +3,5 @@ terraform {
 }
 
 inputs = {
-  vpc_name = "my-vpc"
-  
+  # Any variables your Terraform module requires
 }
