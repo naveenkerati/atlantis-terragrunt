@@ -53,4 +53,5 @@ List of subnets to create, where each subnet is defined as:
   subnet_cidr = "..."
   subnet_az   = "..."
 }
+EOT
 }
